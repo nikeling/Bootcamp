@@ -1,0 +1,8 @@
+C:\Users\Eling Goran\source\repos\Test\Test1\bin\Debug\Test1.exe.config
+C:\Users\Eling Goran\source\repos\Test\Test1\bin\Debug\Test1.exe
+C:\Users\Eling Goran\source\repos\Test\Test1\bin\Debug\Test1.pdb
+C:\Users\Eling Goran\source\repos\Test\Test1\obj\Debug\OOP-ZOO.csproj.AssemblyReference.cache
+C:\Users\Eling Goran\source\repos\Test\Test1\obj\Debug\OOP-ZOO.csproj.SuggestedBindingRedirects.cache
+C:\Users\Eling Goran\source\repos\Test\Test1\obj\Debug\OOP-ZOO.csproj.CoreCompileInputs.cache
+C:\Users\Eling Goran\source\repos\Test\Test1\obj\Debug\Test1.exe
+C:\Users\Eling Goran\source\repos\Test\Test1\obj\Debug\Test1.pdb

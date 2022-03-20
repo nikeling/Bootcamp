@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP-ZOO", "Test1\OOP-ZOO.csproj", "{FFB5E7B5-8385-4B58-9B2F-D4963D294502}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOPBasics", "..\..\..\Documents\MathosBootcamp\OOPBasics\OOPBasics\OOPBasics.csproj", "{59725B16-BD79-4F8C-B254-0608314AC125}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFB5E7B5-8385-4B58-9B2F-D4963D294502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB5E7B5-8385-4B58-9B2F-D4963D294502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB5E7B5-8385-4B58-9B2F-D4963D294502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB5E7B5-8385-4B58-9B2F-D4963D294502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59725B16-BD79-4F8C-B254-0608314AC125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59725B16-BD79-4F8C-B254-0608314AC125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59725B16-BD79-4F8C-B254-0608314AC125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59725B16-BD79-4F8C-B254-0608314AC125}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3571B5F0-B529-41D7-A0C5-BA3BED1090EE}
+	EndGlobalSection
+EndGlobal
