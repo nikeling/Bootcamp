@@ -1,0 +1,67 @@
+CREATE TABLE Newspaper (
+	IdOfNewspaper INT NOT NULL,
+	NewspaperName VARCHAR(20) NOT NULL,
+	PublishDate DATETIME,
+	ArticleName VARCHAR(20), 
+	CompanyName VARCHAR(20),
+	PRIMARY KEY (IdOfNewspaper),
+);
+
+CREATE TABLE Article (
+	IdOfArticle INT NOT NULL,
+	ArticleName VARCHAR(20) NOT NULL,
+	AuthorId VARCHAR(15),
+	IdOfNewspaper INT,
+	PRIMARY KEY (IdOfArticle),
+	FOREIGN KEY (IdOfNewspaper) REFERENCES Newspaper(IdOfNewspaper),
+);
+
+CREATE TABLE Company (
+	CompanyId INT NOT NULL,
+	CompanyName VARCHAR(20) NOT NULL,
+	NewspaperId INT,
+	PRIMARY KEY (CompanyId),
+	FOREIGN KEY (NewspaperId) REFERENCES Newspaper (IdOfNewspaper)
+);
+
+CREATE TABLE Journalist (
+	JournalistId INT NOT NULL,
+	LastName VARCHAR(20) NOT NULL,
+	ArticleId INT,
+	PRIMARY KEY (JournalistId),
+	FOREIGN KEY (ArticleId) REFERENCES Article (IdOfArticle)
+);
+
+
+
+INSERT INTO Newspaper VALUES 
+(101,'Glas Slavonije', 2022-01-01, 'Politics1','Company One'),
+(102,'Slobodna Dalmacija', 2022-02-01, 'Sport1','Company Two'),
+(103,'Večernji list', 2022-03-01, 'Politics2','Company Three'),
+(104,'Novi list', 2022-04-01, 'Fun1','Company Four'),
+(105,'Jutarnji list', 2022-05-01, 'Politics3','Company Five'),
+(101,'Glas Slavonije', 2022-06-01, 'Politics4','Company One')
+
+
+INSERT INTO Article VALUES
+(201,'Politics1', 401, 101),
+(202,'Sport1',402,102),
+(203,'Politics2', 403,103),
+(204,'Fun1', 404,104),
+(205,'Politics3',405,105),
+(206,'Politics4',406,101)
+
+INSERT INTO Company VALUES
+(301,'Company One', 101),
+(302,'Company Two', 102),
+(303,'Company Three', 103),
+(304,'Company Four', 104), 
+(305,'Company Five', 105)
+
+INSERT INTO Journalist VALUES
+(401,'Jolie',201),
+(402,'Smith',202),
+(403,'Depp',203),
+(404,'Martin',204),
+(405,'Potter',205),
+(406,'Hawking',206)

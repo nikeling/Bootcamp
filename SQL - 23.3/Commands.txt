@@ -1,0 +1,31 @@
+SELECT * FROM Newspaper
+WHERE Title='Glas Slavonije';
+
+SELECT  LastName, ArticleId
+FROM Journalist
+WHERE LastName='Smith' AND ArticleId = '205';
+
+SELECT * FROM Article
+ORDER BY IdOfArticle ASC, AuthorId DESC;
+
+UPDATE Journalist
+SET LastName = 'Schmidt'
+WHERE JournalistId = 401;
+
+SELECT COUNT(IdOfNewspaper)
+FROM Newspaper;
+
+SELECT Newspaper.IdOfNewspaper, Newspaper.Title, Article.ArticleName
+FROM Article
+INNER JOIN Newspaper ON Article.IdOfNewspaper=Newspaper.IdOfNewspaper;
+
+SELECT Article.ArticleName, Journalist.LastName
+FROM Article
+LEFT JOIN Journalist ON Article.IdOfArticle = Journalist.JournalistId
+ORDER BY Article.IdOfArticle;
+
+
+SELECT COUNT(IdOfNewspaper), Title
+FROM Newspaper
+GROUP BY Title;
+
