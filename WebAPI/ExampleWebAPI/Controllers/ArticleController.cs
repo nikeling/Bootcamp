@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using ExampleWebAPI.Models;
+
 
 namespace ExampleWebAPI.Controllers
 {
@@ -89,5 +89,12 @@ namespace ExampleWebAPI.Controllers
 
         }
     }
- 
+    public class Article
+    {
+        public int IdOfArticle { get; set; }
+
+        public string TitleOfArticle { get; set; }
+
+    }
+
 }
