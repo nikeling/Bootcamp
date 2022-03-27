@@ -162,6 +162,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticleRest.cs" />
+    <Compile Include="Models\NewspaperRest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,7 +219,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -247,6 +248,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Example.Model\Example.Model.csproj">
+      <Project>{E8422213-2FD3-4879-B6C4-BCD211A82BCD}</Project>
+      <Name>Example.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Example.Service\Example.Service.csproj">
+      <Project>{0FF8A3A9-A76B-49AC-B4E1-7E9A94150B13}</Project>
+      <Name>Example.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

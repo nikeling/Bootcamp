@@ -168,3 +168,9 @@ C:\Users\Eling Goran\source\repos\Test\WebAPI\ExampleWebAPI\obj\Debug\ExampleWeb
 C:\Users\Eling Goran\source\repos\Test\WebAPI\ExampleWebAPI\obj\Debug\ExampleWebAPI.csproj.CopyComplete
 C:\Users\Eling Goran\source\repos\Test\WebAPI\ExampleWebAPI\obj\Debug\ExampleWebAPI.dll
 C:\Users\Eling Goran\source\repos\Test\WebAPI\ExampleWebAPI\obj\Debug\ExampleWebAPI.pdb
+C:\Users\Eling Goran\source\repos\Test\WebAPI\ExampleWebAPI\bin\Example.Model.dll
+C:\Users\Eling Goran\source\repos\Test\WebAPI\ExampleWebAPI\bin\Example.Service.dll
+C:\Users\Eling Goran\source\repos\Test\WebAPI\ExampleWebAPI\bin\Example.Repository.dll
+C:\Users\Eling Goran\source\repos\Test\WebAPI\ExampleWebAPI\bin\Example.Model.pdb
+C:\Users\Eling Goran\source\repos\Test\WebAPI\ExampleWebAPI\bin\Example.Service.pdb
+C:\Users\Eling Goran\source\repos\Test\WebAPI\ExampleWebAPI\bin\Example.Repository.pdb

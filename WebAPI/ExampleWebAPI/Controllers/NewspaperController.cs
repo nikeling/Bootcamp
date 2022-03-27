@@ -6,151 +6,79 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using Example.Service;
+using ExampleWebAPI.Models;
+using Example.Model;
 
 namespace ExampleWebAPI.Controllers
 {
     public class NewspaperController : ApiController
     {
-       
+        NewspaperService newspaperService = new NewspaperService();
+
         // GET api/newspaper
-        public HttpResponseMessage Get()
-        {  
-            //creates and opens connection
-            string connectionString =@"Data Source=DESKTOP-P0KDF8M;Initial Catalog=Bootcamp;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
-
-            //creates command
-            SqlCommand command = new SqlCommand(
-                "SELECT * FROM Newspaper;",conn);
-
-            //executes command
-            SqlDataReader dataReader = command.ExecuteReader();
-            // creates list
-            List<Newspaper> listOfNewspaper = new List<Newspaper>();
-
-            //checks if dataReader is empty
-            if (dataReader.HasRows)
-            {   //dataReader reads table rows while it can
-                while (dataReader.Read())
-
-                {   //creates newspaper object and connects it with db
-                    Newspaper newspaper = new Newspaper();
-                    newspaper.IdOfNewspaper = dataReader.GetInt32(0);
-                    newspaper.Title = dataReader.GetString(1);
-                    newspaper.Date = dataReader.GetDateTime(2);
-                    newspaper.CompanyName = dataReader.GetString(4);
-
-                    //adds that object to list
-                    listOfNewspaper.Add(newspaper);
-                }
-                
-                dataReader.Close();
-                return Request.CreateResponse(HttpStatusCode.OK, listOfNewspaper);
-            } 
-            else { return Request.CreateResponse(HttpStatusCode.NotFound, "List is not found"); }
-            
+        public List<Newspaper> Get()
+        {
+            List<Newspaper> newspapers = newspaperService.GetNewspapers();
+            return newspapers;
         }
 
         // GET api/newspaper/5
         public HttpResponseMessage GetNewspaperById(int id)
-        {   
-            //creates and opens connection
-            string connectionString = @"Data Source=DESKTOP-P0KDF8M;Initial Catalog=Bootcamp;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
+        {
+            var newspaper1 = newspaperService.GetNewspaperById(id);
 
-  
-            SqlCommand command = new SqlCommand(
-                $"SELECT * FROM Newspaper WHERE IdOfNewspaper={id};", conn);
-
-            SqlDataReader dataReader = command.ExecuteReader();
-
-            List<Newspaper> listOfNewspaper = new List<Newspaper>();
-
-            if (dataReader.HasRows)
+            if (newspaper1 == null)
             {
-                while (dataReader.Read())
-                {
-                    Newspaper newspaper = new Newspaper();
-                    newspaper.IdOfNewspaper = dataReader.GetInt32(0);
-                    newspaper.Title = dataReader.GetString(1);
-                    newspaper.Date = dataReader.GetDateTime(2);
-                    newspaper.CompanyName = dataReader.GetString(4);
-                    listOfNewspaper.Add(newspaper);
-                }
-                dataReader.Close();
-
-                var searchedNewspaper = listOfNewspaper.Find(p => p.IdOfNewspaper == id);
-
-                if (searchedNewspaper == null)
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound, "Newspaper by id " + id + " is not found");
-                }
-                return Request.CreateResponse(HttpStatusCode.OK, searchedNewspaper);
+                return Request.CreateResponse(HttpStatusCode.NotFound, $"Newspapers by id: {id} is not found");
             }
-            else { return Request.CreateResponse(HttpStatusCode.NotFound, "List is not found"); }
+            return Request.CreateResponse(HttpStatusCode.OK, newspaper1);
         }
 
         // POST api/newspaper
         public HttpResponseMessage PostNewNewspaper(Newspaper newspaper)
-        {   
-            
-            string connectionString = @"Data Source=DESKTOP-P0KDF8M;Initial Catalog=Bootcamp;Integrated Security=True";
-            SqlConnection conn = new SqlConnection(connectionString);
-            
-
+        {
             if (newspaper == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, newspaper);
             }
             else
             {
-                conn.Open();
-                string querystring = $"INSERT INTO Newspaper (IdOfNewspaper, Title, CompanyName) VALUES ('{newspaper.IdOfNewspaper }','{newspaper.Title}','{newspaper.CompanyName}');";
-
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(querystring, conn);
-                DataSet newspaperData = new DataSet();
-                dataAdapter.Fill(newspaperData, "Newspaper");
-                conn.Close();
-                return Request.CreateResponse(HttpStatusCode.OK, "Dodano u listu");
+                newspaperService.PostNewNewspaper(newspaper);
+                return Request.CreateResponse(HttpStatusCode.OK, "Added to the Newspaper base");
             }
         }
 
         // PUT api/newspaper/5
-        //public HttpResponseMessage Put(int id, [FromBody] string value)
-        //{
-           
-        //}
+        public HttpResponseMessage PutNewTitle(int id, [FromBody] string value)
+        {
+            if (value == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, value);
+            }
+            else
+            {
+                newspaperService.PutNewTitle(id, value);
+                return Request.CreateResponse(HttpStatusCode.OK, $"Newspaper of id = {id} has changed title to {value}");
+            }
+        }
 
-        //// DELETE api/newspaper/5
-        //public HttpResponseMessage Delete(int id)
-        //{  
-        //    var newspaper = listOfNewspaper.Find(p => p.IdOfNewspaper == id);
-
-        //    if (newspaper == null)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.NotFound, id);
-        //    }
-        //    else
-        //    {
-        //        listOfNewspaper.Remove(newspaper);
-        //        return Request.CreateResponse(HttpStatusCode.OK,listOfNewspaper);
-        //    }
-        //}
+        // DELETE api/newspaper/5
+        public HttpResponseMessage DeleteNewspaper(int id)
+        {
+            if (newspaperService.GetNewspaperById(id) == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, $"Newspaper by id: {id} is not found");
+            } else
+            {
+                newspaperService.DeleteNewspaper(id);
+                return Request.CreateResponse(HttpStatusCode.OK, $"Newspaper of id= {id} has been deleted");
+            }
+        }
     }
-    public class Newspaper
-    {
-        public int IdOfNewspaper { get; set; }
-        public string Title { get; set; }
-        public DateTime Date { get; set; }
-        public string ArticleName { get; set; }
-
-        public string CompanyName { get; set; }
-
-       
-
-    }
+    
 }
+      
+    
+
 

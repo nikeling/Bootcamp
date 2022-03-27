@@ -1,0 +1,9 @@
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Repository\bin\Debug\Example.Repository.dll
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Repository\bin\Debug\Example.Repository.pdb
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Repository\bin\Debug\Example.Model.dll
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Repository\bin\Debug\Example.Model.pdb
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Repository\obj\Debug\Example.Repository.csproj.AssemblyReference.cache
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Repository\obj\Debug\Example.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Repository\obj\Debug\Example.Repository.csproj.CopyComplete
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Repository\obj\Debug\Example.Repository.dll
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Repository\obj\Debug\Example.Repository.pdb

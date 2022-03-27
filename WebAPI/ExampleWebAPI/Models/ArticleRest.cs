@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ExampleWebAPI.Models
 {
-    public class Article
+    public class ArticleRest
     {
         public int IdOfArticle { get; set; }
 

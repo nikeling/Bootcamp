@@ -4,97 +4,81 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using Example.Model;
+using Example.Service;
 
 namespace ExampleWebAPI.Controllers
 {
     public class ArticleController : ApiController
     {
-        public static List<Article> listOfArticles = new List<Article>()
-        { new Article { IdOfArticle = 1, TitleOfArticle = "Article One" },
-          new Article { IdOfArticle= 2, TitleOfArticle = "Article Two" },
-          new Article { IdOfArticle = 3, TitleOfArticle = "Article Three" }
-        };
+        ArticleService articleServ = new ArticleService();
 
-        // GET api/values
-        public List<Article> Get()
+        // GET api/article
+        public HttpResponseMessage Get()
         {
-            return listOfArticles;
+            return Request.CreateResponse(HttpStatusCode.OK, articleServ.GetArticles());
         }
 
 
-        // GET api/values/5
-        public HttpResponseMessage GetArticle(string title)
-        {
-            var article = listOfArticles.Find(p => p.TitleOfArticle == title);
-
-            if (article == null)
+        //GET api/article/5
+            public HttpResponseMessage GetArticleById(int id)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, title);
-            }
-            return Request.CreateResponse(HttpStatusCode.OK, article);
-
-        }
-
-        // POST api/values
-        public HttpResponseMessage PostNewArticle([FromBody]string title)
-        {
-            if (title == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound, title);
-            }
-            else
-            {
-                Article article = new Article();
-                article.TitleOfArticle = title;
-                var sum = listOfArticles.Count();
-                article.IdOfArticle = sum + 1;
-                listOfArticles.Add(article);
-
-                return Request.CreateResponse(HttpStatusCode.OK, listOfArticles);
-            }
-
-        }
-
-        // PUT api/values/5
-        public HttpResponseMessage PutNewTitle(int id, [FromBody] string title)
-        {
-            var article = listOfArticles.Find(p => p.IdOfArticle == id);
-
-            if (article == null)
-            {
+                if (articleServ.GetArticleById(id) == null)
+                {
                 return Request.CreateResponse(HttpStatusCode.NotFound, id);
-            }
-            else
-            {
-                article.TitleOfArticle = title;
-                return Request.CreateResponse(HttpStatusCode.OK, article);
-            }
-        }
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, articleServ.GetArticleById(id));
+             }
 
-        // DELETE api/values/5
-        public HttpResponseMessage DeleteArticle(int id)
+        // POST api/article
+        public HttpResponseMessage PostNewArticle(Article article)
         {
-            var article = listOfArticles.Find(p => p.IdOfArticle == id);
-
-            if (article == null)
+            if (article== null)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, id);
+                return Request.CreateResponse(HttpStatusCode.NotFound, article);
             }
             else
             {
-                listOfArticles.Remove(article);
-                return Request.CreateResponse(HttpStatusCode.OK, listOfArticles);
+                articleServ.PostNewArticle(article);
+                return Request.CreateResponse(HttpStatusCode.OK, "Added to the Article base");
             }
 
         }
-    }
-    public class Article
-    {
-        public int IdOfArticle { get; set; }
 
-        public string TitleOfArticle { get; set; }
+        //    // PUT api/article/5
+        //    public HttpResponseMessage PutNewTitle(int id, [FromBody] string title)
+        //    {
+        //        var article = listOfArticles.Find(p => p.IdOfArticle == id);
+
+        //        if (article == null)
+        //        {
+        //            return Request.CreateResponse(HttpStatusCode.NotFound, id);
+        //        }
+        //        else
+        //        {
+        //            article.TitleOfArticle = title;
+        //            return Request.CreateResponse(HttpStatusCode.OK, article);
+        //        }
+        //    }
+
+        //    // DELETE api/article/5
+        //    public HttpResponseMessage DeleteArticle(int id)
+        //    {
+        //        var article = listOfArticles.Find(p => p.IdOfArticle == id);
+
+        //        if (article == null)
+        //        {
+        //            return Request.CreateResponse(HttpStatusCode.NotFound, id);
+        //        }
+        //        else
+        //        {
+        //            listOfArticles.Remove(article);
+        //            return Request.CreateResponse(HttpStatusCode.OK, listOfArticles);
+        //        }
+
+        //    }
+        //}
+        
 
     }
-
 }
