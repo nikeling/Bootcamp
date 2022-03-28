@@ -9,6 +9,7 @@ using System.Web.Http;
 using Example.Service;
 using ExampleWebAPI.Models;
 using Example.Model;
+using System.Threading.Tasks;
 
 namespace ExampleWebAPI.Controllers
 {
@@ -16,17 +17,18 @@ namespace ExampleWebAPI.Controllers
     {
         NewspaperService newspaperService = new NewspaperService();
 
+
         // GET api/newspaper
-        public List<Newspaper> Get()
+        public async Task <List<Newspaper>> GetAsync()
         {
-            List<Newspaper> newspapers = newspaperService.GetNewspapers();
+            List<Newspaper> newspapers = await Task.Run(() => newspaperService.GetNewspapersAsync()); 
             return newspapers;
         }
 
         // GET api/newspaper/5
-        public HttpResponseMessage GetNewspaperById(int id)
+        public async Task<HttpResponseMessage> GetNewspaperByIdAsync(int id)
         {
-            var newspaper1 = newspaperService.GetNewspaperById(id);
+            var newspaper1 = await Task.Run(() => newspaperService.GetNewspaperByIdAsync(id)); 
 
             if (newspaper1 == null)
             {
@@ -36,21 +38,24 @@ namespace ExampleWebAPI.Controllers
         }
 
         // POST api/newspaper
-        public HttpResponseMessage PostNewNewspaper(Newspaper newspaper)
+        public async Task<HttpResponseMessage> PostNewNewspaperAsync(NewspaperRest newspaperRest)
         {
-            if (newspaper == null)
+            if (newspaperRest == null)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, newspaper);
+                return Request.CreateResponse(HttpStatusCode.NotFound, newspaperRest);
             }
             else
             {
-                newspaperService.PostNewNewspaper(newspaper);
+                Newspaper newspaper = new Newspaper();
+                newspaper.IdOfNewspaper = newspaperRest.IdOfNewspaper;
+                newspaper.Title = newspaperRest.Title;
+                await Task.Run(() => newspaperService.PostNewNewspaperAsync(newspaper)); 
                 return Request.CreateResponse(HttpStatusCode.OK, "Added to the Newspaper base");
             }
         }
 
         // PUT api/newspaper/5
-        public HttpResponseMessage PutNewTitle(int id, [FromBody] string value)
+        public async Task<HttpResponseMessage> PutNewTitleAsync(int id, [FromBody] string value)
         {
             if (value == null)
             {
@@ -58,20 +63,21 @@ namespace ExampleWebAPI.Controllers
             }
             else
             {
-                newspaperService.PutNewTitle(id, value);
+                await Task.Run(() => newspaperService.PutNewTitleAsync(id, value));
                 return Request.CreateResponse(HttpStatusCode.OK, $"Newspaper of id = {id} has changed title to {value}");
             }
         }
 
         // DELETE api/newspaper/5
-        public HttpResponseMessage DeleteNewspaper(int id)
+        public async Task<HttpResponseMessage> DeleteNewspaperAsync(int id)
         {
-            if (newspaperService.GetNewspaperById(id) == null)
+           var x = await Task.Run(() => newspaperService.GetNewspaperByIdAsync(id));
+            if (x == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, $"Newspaper by id: {id} is not found");
             } else
             {
-                newspaperService.DeleteNewspaper(id);
+                await Task.Run(() => newspaperService.DeleteNewspaperAsync(id));
                 return Request.CreateResponse(HttpStatusCode.OK, $"Newspaper of id= {id} has been deleted");
             }
         }

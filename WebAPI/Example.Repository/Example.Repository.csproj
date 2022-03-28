@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.Repository.cs" />
+    <Compile Include="IArticleRepository.Common.cs" />
     <Compile Include="Newspaper.Repository.cs" />
     <Compile Include="INewspaperRepository.Common.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

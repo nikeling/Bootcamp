@@ -11,32 +11,36 @@ namespace Example.Service
     public class NewspaperService : INewspaperService
     {
         NewspaperRepository newspaperRepo = new NewspaperRepository();
-        public List<Newspaper> GetNewspapers()
+
+        public async Task<List<Newspaper>> GetNewspapersAsync()
         {
-            List<Newspaper> newspapers = newspaperRepo.GetNewspapers();
+            List<Newspaper> newspapers = await Task.Run(() => newspaperRepo.GetNewspapersAsync());
             return newspapers;
         }
 
-        public Newspaper GetNewspaperById(int id)
+        public async Task<Newspaper> GetNewspaperByIdAsync(int id)
         {
-            return newspaperRepo.GetNewspaperById(id); 
+            return await Task.Run(() => newspaperRepo.GetNewspaperByIdAsync(id));
         }
 
-        public void PostNewNewspaper(Newspaper newspaper)
+        public async Task PostNewNewspaperAsync(Newspaper newspaper)
         {
-            newspaperRepo.PostNewNewspaper(newspaper);
+            await Task.Run(() => newspaperRepo.PostNewNewspaperAsync(newspaper));
+            
         }
 
-        public void PutNewTitle(int id, string value)
+        public async Task PutNewTitleAsync(int id, string value)
         {
-            newspaperRepo.PutNewTitle(id, value);
+            await Task.Run(() => newspaperRepo.PutNewTitleAsync(id, value));
+            
         }
 
-        public void DeleteNewspaper(int id)
+        public async Task DeleteNewspaperAsync(int id)
         {
-            newspaperRepo.DeleteNewspaper(id);
+            await Task.Run(() => newspaperRepo.DeleteNewspaperAsync(id));
+            
         }
 
-
+        
     }
 }

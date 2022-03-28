@@ -9,7 +9,7 @@ using Example.Model;
 
 namespace Example.Repository
 {
-    public class ArticleRepository
+    public class ArticleRepository : IArticleRepository
     {
         //creates and opens connection
         static string connectionString = @"Data Source=DESKTOP-P0KDF8M;Initial Catalog=Bootcamp;Integrated Security=True";
@@ -44,6 +44,7 @@ namespace Example.Repository
             }
             return listOfArticles;
         }
+
         public Article GetArticleById(int id)
         {
             conn.Open();
@@ -66,7 +67,7 @@ namespace Example.Repository
             return article;
         }
 
-        public void PostNewNewspaper(Article article)
+        public void PostNewArticle(Article article)
         {
             conn.Open();
             string querystring = $"INSERT INTO Article (IdOfArticle, ArticleName) VALUES ('{article.IdOfArticle }','{article.TitleOfArticle}');";
@@ -74,6 +75,32 @@ namespace Example.Repository
             SqlDataAdapter dataAdapter = new SqlDataAdapter(querystring, conn);
             DataSet articleData = new DataSet();
             dataAdapter.Fill(articleData, "Article");
+            conn.Close();
+        }
+        
+        public void PutNewTitle(int id, string value)
+        {
+            conn.Open();
+            string querystring = $"UPDATE Article SET ArticleName= '{value}' WHERE IdOfArticle='{id}'";
+
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(querystring, conn);
+            DataSet articleData = new DataSet();
+            dataAdapter.Fill(articleData, "Article");
+            conn.Close();    
+        }
+
+        
+        public void DeleteArticle(int id)
+        {
+            conn.Open();
+            string querystring1 = $"DELETE FROM Journalist WHERE ArticleId='{id}'";
+            string querystring2 = $"DELETE FROM Article WHERE IdOfArticle='{id}'";
+
+            SqlDataAdapter dataAdapter1 = new SqlDataAdapter(querystring1, conn);
+            SqlDataAdapter dataAdapter2 = new SqlDataAdapter(querystring2, conn);
+            DataSet articleData = new DataSet();
+            dataAdapter1.Fill(articleData, "Journalist");
+            dataAdapter2.Fill(articleData, "Article");
             conn.Close();
         }
     }

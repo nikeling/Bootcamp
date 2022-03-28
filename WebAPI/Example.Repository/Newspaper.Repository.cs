@@ -9,21 +9,21 @@ using Example.Model;
 
 namespace Example.Repository
 {
-    public class NewspaperRepository
+    public class NewspaperRepository : INewspaperRepository
     {
         //creates and opens connection
         static string connectionString = @"Data Source=DESKTOP-P0KDF8M;Initial Catalog=Bootcamp;Integrated Security=True";
         SqlConnection conn = new SqlConnection(connectionString);
 
-        public List<Newspaper> GetNewspapers()
+        public async Task<List<Newspaper>> GetNewspapersAsync()
         {
-            conn.Open();
+             conn.Open();
             //creates command
             SqlCommand command = new SqlCommand(
                 "SELECT * FROM Newspaper;", conn);
 
             //executes command
-            SqlDataReader dataReader = command.ExecuteReader();
+            SqlDataReader dataReader = await Task.Run(() => command.ExecuteReader());
             // creates list
             List<Newspaper> listOfNewspaper = new List<Newspaper>();
 
@@ -47,13 +47,13 @@ namespace Example.Repository
             return listOfNewspaper;
         }
 
-        public Newspaper GetNewspaperById(int id)
+        public async Task<Newspaper> GetNewspaperByIdAsync(int id)
         {
                 conn.Open();
                 SqlCommand command = new SqlCommand(
                     $"SELECT * FROM Newspaper WHERE IdOfNewspaper={id};", conn);
 
-                SqlDataReader dataReader = command.ExecuteReader();
+                SqlDataReader dataReader = await Task.Run(() => command.ExecuteReader());
                 Newspaper newspaper = new Newspaper();
 
                 if (dataReader.HasRows)
@@ -71,38 +71,38 @@ namespace Example.Repository
                 return newspaper;
         }
 
-        public void  PostNewNewspaper(Newspaper newspaper)
+        public async Task PostNewNewspaperAsync(Newspaper newspaper)
         {
             conn.Open();
             string querystring = $"INSERT INTO Newspaper (IdOfNewspaper, Title, CompanyName) VALUES ('{newspaper.IdOfNewspaper }','{newspaper.Title}','{newspaper.CompanyName}');";
 
             SqlDataAdapter dataAdapter = new SqlDataAdapter(querystring, conn);
             DataSet newspaperData = new DataSet();
-            dataAdapter.Fill(newspaperData, "Newspaper");
+            await Task.Run(() => dataAdapter.Fill(newspaperData, "Newspaper")); 
             conn.Close();
         }
 
 
-        public void PutNewTitle(int id, string value)
+        public async Task PutNewTitleAsync(int id, string value)
         {
             conn.Open();
             string querystring = $"UPDATE Newspaper SET Title= '{value}' WHERE IdOfNewspaper='{id}'";
 
             SqlDataAdapter dataAdapter = new SqlDataAdapter(querystring, conn);
             DataSet newspaperData = new DataSet();
-            dataAdapter.Fill(newspaperData, "Newspaper");
+            await Task.Run(() => dataAdapter.Fill(newspaperData, "Newspaper"));
             conn.Close();    
         }
 
-        // DELETE api/newspaper/5
-        public void DeleteNewspaper(int id)
+        
+        public async Task DeleteNewspaperAsync(int id)
         {
             conn.Open();
             string querystring = $"DELETE FROM Newspaper WHERE IdOfNewspaper='{id}'";
 
             SqlDataAdapter dataAdapter = new SqlDataAdapter(querystring, conn);
             DataSet newspaperData = new DataSet();
-            dataAdapter.Fill(newspaperData, "Newspaper");
+            await Task.Run(() => dataAdapter.Fill(newspaperData, "Newspaper"));
             conn.Close();
         }
     }

@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleService.cs" />
-    <Compile Include="NewspaperService.Common.cs" />
+    <Compile Include="IArticleService.Common.cs" />
+    <Compile Include="INewspaperService.Common.cs" />
     <Compile Include="NewspaperService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

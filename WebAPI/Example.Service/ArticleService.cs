@@ -25,7 +25,18 @@ namespace Example.Service
 
         public void PostNewArticle(Article article)
         {
-            articleRepo.PostNewNewspaper(article);
+            articleRepo.PostNewArticle(article);
         }
+
+        public void PutNewTitle(int id, string value)
+        {
+            articleRepo.PutNewTitle(id, value);
+        }
+
+        public void DeleteArticle(int id)
+        {
+            articleRepo.DeleteArticle(id);
+        }
+
     }
 }

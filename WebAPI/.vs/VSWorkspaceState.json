@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Example.Service",
+    "\\ExampleWebAPI",
+    "\\ExampleWebAPI\\Controllers",
+    "\\ExampleWebAPI\\Models"
+  ],
+  "SelectedNode": "\\ExampleWebAPI\\Controllers\\NewspaperController.cs",
+  "PreviewInSolutionExplorer": false
+}

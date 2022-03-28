@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Example.Model
 {
-    public class Newspaper
+    public class Newspaper : INewspaper
     {
             public int IdOfNewspaper { get; set; }
             public string Title { get; set; }
