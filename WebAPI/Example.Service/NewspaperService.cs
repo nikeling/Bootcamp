@@ -5,16 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using Example.Repository;
 using Example.Model;
+using Example.Common;
 
 namespace Example.Service
 {
     public class NewspaperService : INewspaperService
     {
-        NewspaperRepository newspaperRepo = new NewspaperRepository();
+        private INewspaperRepository newspaperRepo;
+        
 
-        public async Task<List<Newspaper>> GetNewspapersAsync()
+        public NewspaperService(INewspaperRepository newspaperRepo)
         {
-            List<Newspaper> newspapers = await Task.Run(() => newspaperRepo.GetNewspapersAsync());
+            this.newspaperRepo = newspaperRepo;
+
+        }
+
+        public async Task<List<Newspaper>> GetNewspapersAsync(Paging paging, Filtering filtering, Sorting sorting)
+        {
+            List<Newspaper> newspapers = await Task.Run(() => newspaperRepo.GetNewspapersAsync(paging, filtering, sorting));
             return newspapers;
         }
 

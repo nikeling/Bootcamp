@@ -8,7 +8,7 @@ using Example.Repository;
 
 namespace Example.Service
 {
-    public class ArticleService
+    public class ArticleService : IArticleService
     {
         ArticleRepository articleRepo = new ArticleRepository();
 

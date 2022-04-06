@@ -1,0 +1,6 @@
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Common\bin\Debug\Example.Common.dll
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Common\bin\Debug\Example.Common.pdb
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Common\obj\Debug\Example.Common.csproj.AssemblyReference.cache
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Common\obj\Debug\Example.Common.csproj.CoreCompileInputs.cache
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Common\obj\Debug\Example.Common.dll
+C:\Users\Eling Goran\source\repos\Test\WebAPI\Example.Common\obj\Debug\Example.Common.pdb

@@ -10,24 +10,33 @@ using Example.Service;
 using ExampleWebAPI.Models;
 using Example.Model;
 using System.Threading.Tasks;
+using Example.Common;
 
 namespace ExampleWebAPI.Controllers
 {
     public class NewspaperController : ApiController
     {
-        NewspaperService newspaperService = new NewspaperService();
+        private INewspaperService newspaperService;
 
+
+        public NewspaperController(INewspaperService newspaperService)
+        {
+            this.newspaperService = newspaperService;
+        }
+           
 
         // GET api/newspaper
-        public async Task <List<Newspaper>> GetAsync()
+        public async Task <List<Newspaper>> GetAsync(Paging paging, Filtering filtering,[FromBody]Sorting sorting)
         {
-            List<Newspaper> newspapers = await Task.Run(() => newspaperService.GetNewspapersAsync()); 
+            List<Newspaper> newspapers = await Task.Run(() => newspaperService.GetNewspapersAsync(paging, filtering, sorting)); 
             return newspapers;
         }
+
 
         // GET api/newspaper/5
         public async Task<HttpResponseMessage> GetNewspaperByIdAsync(int id)
         {
+
             var newspaper1 = await Task.Run(() => newspaperService.GetNewspaperByIdAsync(id)); 
 
             if (newspaper1 == null)

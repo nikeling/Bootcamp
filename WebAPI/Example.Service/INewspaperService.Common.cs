@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Example.Common;
 using Example.Model;
 
 namespace Example.Service
 {
     public interface INewspaperService
     {
-        Task<List<Newspaper>> GetNewspapersAsync();
+        Task<List<Newspaper>> GetNewspapersAsync(Paging paging, Filtering filtering, Sorting sorting);
 
         Task <Newspaper> GetNewspaperByIdAsync(int id);
 
