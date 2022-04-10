@@ -1,0 +1,104 @@
+th, tr {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#tablica {
+    justify-content: center;
+    border: 2px solid black;
+    
+}
+
+
+.pic {
+  width: 400px;
+  height: auto;
+
+}
+
+.form1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  
+}
+
+.label1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  display: flex;
+}
+
+.submit{
+  border-radius: 1rem;
+  background-color:#04855a;
+  color:#ffffff;
+  font-weight: 300;
+  align-self: center;
+}
+
+.pitanja{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1rem;
+  
+}
+.link{
+  font-weight: 500;
+  color: #8b000c;
+  
+}
+
+.pitanje{
+  align-self: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form{
+  align-self: center;
+  border-style:double;
+  border-width: 2px;
+  border-color: #8b000c;
+  padding: 10px;
+  background-color:#e4c6c8;
+  display: flex;
+}
+
+.comparison {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+    
+}
+
+
+hr {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-style: none;
+    border-top-style: dotted;
+    border-color: #8b000c;
+    border-width: 5px;
+    width:5%;
+    
+
+}
+
+body {
+  background-color: #f0e6d7;
+  margin-left: 20px;
+}
+
+h1,h3 {
+  color: #8b000c;
+}
+
