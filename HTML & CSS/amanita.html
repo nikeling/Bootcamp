@@ -9,26 +9,29 @@
 </head>
 
 <body>
-    <a class="link" href =index.html>&larr;Home page</a>
+    <div>
+        <a class="link" href =index.html>&larr;Home page</a>
+        <p id="data"></p>
+    </div>
     <h1 style="text-align:center">MUSHROOM QUIZ</h1>
     <h4 style="text-align:center">Enter data and answer the questions </h4>
    <div class="form1">
        <div class="form">
-           <form>
+           <form name="myForm">
             <div class="label">
                 <label for="fname">First name:</label><br>
-                <input type="text" id="fname" name="fname"><br>
+                <input type="text" id="fname" name="fname" required>
             </div>
             <div class="label">
                 <label for="lname">Last name:</label><br>
-                <input type="text" id="lname" name="lname">
+                <input type="text" id="lname" name="lname" required>
             </div>
             <div class="label">
                 <label for="email">Email:</label><br>
-                <input type="text" id="email" name="lname">
+                <input type="text" id="email" name="email" required>
             </div>
             <div class="label1">
-                <button class="submit" type="submit"> OK </button>
+                <button class="submit" onclick="showData()" type="button"> OK </button>
             </div>
            </form>
        </div>
@@ -60,5 +63,6 @@
         </div>
         <div class="pitanje"><img class="pic" alt="Boletus" src ="img/boletus.jpg"></div>
    </div>
+<script src="js/script.js"></script>
 </body>
 </html>

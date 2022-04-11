@@ -9,15 +9,24 @@
 </head>
 
 
-<body>
+<body id="body">
     <table cellspacing= "20">
         <tr>
             <td><img class="pic" alt="Amanita Muscaria" src ="img/mushroom.jpg"></td>
             <td><h1>Mushrooms</h1>
                 <p><em>A mushroom or toadstool is the fleshy, spore-bearing fruiting body of a fungus, typically produced above ground, on soil, or on its food source.</em></p>
                 <p><a class="link" href="amanita.html">Mushroom Quiz</a></p>
+                <button class="button" onclick="changeColour()">Change colour</button>
                 </td>
         </tr>
+        <tr><td>
+            <div class="mod">
+                <button class = "button" onclick = "showMushroom()" type="button">
+                    Click here to get your mushroom of the day
+                </button>
+                <p id = "mod"></p>
+            </div>
+        </td></tr>
     </table>
 
     <hr>
@@ -62,14 +71,19 @@
     </div>
     <hr>
     <h3>List of Boletus species</h3>
-    <ul>
+    <ul id="list">
         <li>Boletus lignicola</li>
         <li>Boletus abruptibulbus</li>
         <li>Boletus aereus </li>
         <li>Boletus occidentalis</li>
         <li>Boletus orientialbus</li>
     </ul>
+    <div>
+        <label for="item">Enter a new item:</label>
+        <input type="text" name="item" id="item">
+        <button onclick="addToList()" id="addToList">Add item</button>
+      </div>
     <hr>
-
+<script src="js/script.js"></script>
 </body>
 </html>

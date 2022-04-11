@@ -10,6 +10,28 @@ th, tr {
 }
 
 
+.button{
+  border-radius:  2rem;
+  background-color:#e4c6c8;
+  outline-width: 2rem;
+  border-color: #8b000c;
+  padding: 0.5rem;
+  font-weight: 700;
+  
+}
+.button:hover {
+  background-color:#8b000c;
+  color:#e4c6c8;
+}
+
+
+#mod{
+  font-size: 24px;
+  font-weight: bold; 
+  color:#8b000c;
+  margin-left: 20px;
+}
+
 .pic {
   width: 400px;
   height: auto;
@@ -82,7 +104,7 @@ th, tr {
 
 
 hr {
-    margin-top: 50px;
+    margin-top: 20px;
     margin-bottom: 20px;
     border-style: none;
     border-top-style: dotted;
@@ -98,7 +120,15 @@ body {
   margin-left: 20px;
 }
 
+.body{
+  background-color: #e2a9a9;
+}
+
 h1,h3 {
   color: #8b000c;
+}
+
+li {
+  margin-right: 3px;
 }
 
