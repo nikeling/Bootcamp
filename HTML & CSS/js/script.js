@@ -4,9 +4,11 @@
     var mod = document.getElementById('MOD');
     var mushroomList = ["Amanita Muscaria", "Boletus Satanus",
                 "Amanita Casarea", "Russula"];
+
+  
          
     function showMushroom() {
-        document.getElementById('mod').innerHTML = list[Math.floor(Math.random() * list.length)];
+        document.getElementById('mod').innerHTML = mushroomList[Math.floor(Math.random() * mushroomList.length)];
         }
 
     function changeColour(){
@@ -45,11 +47,41 @@
     
 
 // AMANITA 
+ 
 
 function showData(){
-    document.getElementById('data').innerHTML = `Firstname: ${document.forms["myForm"]["fname"].value}
-           <br> Lastname: ${document.forms["myForm"]["lname"].value}
-         <br> Email: ${document.forms["myForm"]["email"].value}`;
+
+   const fname = document.forms["myForm"]["fname"].value;
+   const lname = document.forms["myForm"]["lname"].value;
+   const email = document.forms["myForm"]["email"].value;
+
+    // document.getElementById('data').innerHTML = `Firstname: ${fname}
+    //        <br> Lastname: ${lname}
+    //      <br> Email: ${email}`;
+
+    let listOfUsers= [
+      { firstname: 'John',
+        lastname: 'Smith',
+        email: 'nnn@gmail.com'
+      },
+      {firstname: 'Peter',
+      lastname: 'Redd',
+      email: 'nmn@gmail.com'}
+    ];
+
+    let newUser = {
+      firstname: fname,
+      lastname: lname,
+      email: email,
+    }
+
+    //add to list
+    listOfUsers.push(newUser);
+    document.getElementById('data').innerHTML = JSON.stringify(listOfUsers);
+
+    
+
+    
 }
 
 
