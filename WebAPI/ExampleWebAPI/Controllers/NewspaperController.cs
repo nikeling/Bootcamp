@@ -11,11 +11,14 @@ using ExampleWebAPI.Models;
 using Example.Model;
 using System.Threading.Tasks;
 using Example.Common;
+using System.Web.Http.Cors;
 
 namespace ExampleWebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class NewspaperController : ApiController
     {
+
         private INewspaperService newspaperService;
 
 
@@ -26,7 +29,7 @@ namespace ExampleWebAPI.Controllers
            
 
         // GET api/newspaper
-        public async Task <List<Newspaper>> GetAsync(Paging paging, Filtering filtering,[FromBody]Sorting sorting)
+        public async Task <List<Newspaper>> GetAsync([FromUri] Paging paging, [FromUri] Filtering filtering, [FromUri] Sorting sorting)
         {
             List<Newspaper> newspapers = await Task.Run(() => newspaperService.GetNewspapersAsync(paging, filtering, sorting)); 
             return newspapers;

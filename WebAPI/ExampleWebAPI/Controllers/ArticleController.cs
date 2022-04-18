@@ -11,12 +11,18 @@ using ExampleWebAPI.Models;
 namespace ExampleWebAPI.Controllers
 {
     public class ArticleController : ApiController 
-    { 
-    
-        ArticleService articleServ = new ArticleService();
+    {
+            private IArticleService articleServ;
 
-            // GET api/article
-            public HttpResponseMessage Get()
+            public ArticleController(IArticleService articleServ)
+            {
+            this.articleServ = articleServ;
+            }
+
+
+
+        // GET api/article
+        public HttpResponseMessage Get()
             {
                 return Request.CreateResponse(HttpStatusCode.OK, articleServ.GetArticles());
             }

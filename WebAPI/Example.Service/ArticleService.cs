@@ -10,7 +10,12 @@ namespace Example.Service
 {
     public class ArticleService : IArticleService
     {
-        ArticleRepository articleRepo = new ArticleRepository();
+        private IArticleRepository articleRepo;
+
+        public ArticleService(IArticleRepository articleRepo)
+        {
+            this.articleRepo = articleRepo;
+        }
 
         public List<Article> GetArticles()
         {

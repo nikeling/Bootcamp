@@ -25,9 +25,9 @@ namespace Example.Repository
             query.Append($"SELECT * FROM Newspaper");
 
 
-            if (paging != null)
+            if (paging.PageNumber > 0 & paging.RecordsPerPage > 0)
             {
-                query.Append($"LIMIT {paging.RecordsPerPage} OFFSET {(paging.PageNumber - 1) - paging.RecordsPerPage}");
+                query.Append($" LIMIT {paging.RecordsPerPage} OFFSET {(paging.PageNumber - 1) - paging.RecordsPerPage}");
             }
 
 
@@ -35,7 +35,7 @@ namespace Example.Repository
             {
                 if (!string.IsNullOrWhiteSpace(sorting.OrderBy))
                 {
-                    query.Append($"ORDER BY {sorting.OrderBy}");
+                    query.Append($" ORDER BY {sorting.OrderBy}");
 
                     if (!string.IsNullOrWhiteSpace(sorting.OrderAD))
                     {
@@ -46,26 +46,27 @@ namespace Example.Repository
 
             if (filtering!= null)
             {
-                query.Append("WHERE 1=1");
+                query.Append(" WHERE 1=1");
 
                 if (!string.IsNullOrWhiteSpace(filtering.Title))
                 {
-                    query.Append($"AND Title LIKE '%{filtering.Title}'");
+                    query.Append($" AND Title LIKE '%{filtering.Title}'");
                 }
 
                 if (!string.IsNullOrWhiteSpace(filtering.CompanyName))
                 {
-                    query.Append($"AND CompanyName LIKE '%{filtering.CompanyName}'");
+                    query.Append($" AND CompanyName LIKE '%{filtering.CompanyName}'");
                 }
 
             }
 
+            query.Append(";");
             
             SqlCommand command = new SqlCommand(
                 query.ToString(), conn);
 
             //executes command
-            SqlDataReader dataReader = await Task.Run(() => command.ExecuteReader());
+            SqlDataReader dataReader = await command.ExecuteReaderAsync();
             // creates list
             List<Newspaper> listOfNewspaper = new List<Newspaper>();
 
@@ -143,8 +144,8 @@ namespace Example.Repository
             string querystring = $"DELETE FROM Newspaper WHERE IdOfNewspaper='{id}'";
 
             SqlDataAdapter dataAdapter = new SqlDataAdapter(querystring, conn);
-            DataSet customerData = new DataSet();
-            dataAdapter.Fill(customerData, "CustomerDetails");
+            DataSet newspaperData = new DataSet();
+            
             await Task.Run(() => dataAdapter.Fill(newspaperData, "Newspaper"));
             conn.Close();
         }

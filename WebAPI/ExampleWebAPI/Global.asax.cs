@@ -9,6 +9,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.WebApi;
+using Example.Repository;
 using Example.Service;
 
 namespace ExampleWebAPI
@@ -29,7 +30,9 @@ namespace ExampleWebAPI
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             builder.RegisterType<NewspaperService>().As<INewspaperService>();
+            builder.RegisterType<NewspaperRepository>().As<INewspaperRepository>();
             builder.RegisterType<ArticleService>().As<IArticleService>();
+            builder.RegisterType<ArticleRepository>().As<IArticleRepository>();
 
             var container = builder.Build();
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container);

@@ -8,6 +8,36 @@ th, tr {
     border: 2px solid black;
     
 }
+/*--------------- HEADING ----------------------------------*/
+
+
+/*---------- FORM ---------------------------------------*/
+
+.form{
+  align-self: center;
+  border-style:double;
+  border-width: 2px;
+  border-color: #8b000c;
+  padding: 10px;
+  background-color:#e4c6c8;
+  display: flex;
+}
+
+.label1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  display: flex;
+}
+.submit{
+  border-radius: 1rem;
+  background-color:#04855a;
+  color:#ffffff;
+  font-weight: 300;
+  align-self: center;
+}
+
+/*--------------------------------------------------- */
 
 
 .button{
@@ -51,21 +81,6 @@ th, tr {
   
 }
 
-.label1 {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-weight: 500;
-  display: flex;
-}
-
-.submit{
-  border-radius: 1rem;
-  background-color:#04855a;
-  color:#ffffff;
-  font-weight: 300;
-  align-self: center;
-}
-
 .pitanja{
   display: flex;
   flex-direction: column;
@@ -85,15 +100,7 @@ th, tr {
   margin-bottom: 2rem;
 }
 
-.form{
-  align-self: center;
-  border-style:double;
-  border-width: 2px;
-  border-color: #8b000c;
-  padding: 10px;
-  background-color:#e4c6c8;
-  display: flex;
-}
+
 
 .comparison {
   display: flex;
@@ -131,4 +138,6 @@ h1,h3 {
 li {
   margin-right: 3px;
 }
+
+ 
 
